@@ -29,7 +29,7 @@ def generate_clues(secret_number: list[int], user_guess: list[int]):
     return clues
 
 
-def main():
+def run():
     print(f'''
 I am thinking of a {MAX_DIGITS}-digit number with no repeated digits.
 Try to guess what it is. Here are some clues:
@@ -40,7 +40,6 @@ When I say:  That means:
 '''.strip())
     while True:
         secret_number = generate_random_number()
-        print(f'DEBUG: The secret_number is -> {secret_number}')
         
         current_guess = 0
         while current_guess < MAX_GUESSES:
@@ -78,6 +77,13 @@ The answer was {"".join([str(x) for x in secret_number])}
                 if user_input.lower() == 'n':
                     return
                 awaiting_input = False
+
+
+def main():
+    try:
+        run()
+    except:
+        return
 
 
 if __name__ == '__main__':
